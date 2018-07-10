@@ -1,7 +1,7 @@
 static int width = 1280;
 static int height = 720;
 
-Fly[] flies = new Fly[10];
+Fly[] flies = new Fly[11];
 Dragonfly[] dragonflies = new Dragonfly[3];
 Bee[] bees = new Bee[2];
 
