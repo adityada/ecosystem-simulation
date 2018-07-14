@@ -8,11 +8,20 @@ class Dragonfly {
  int bheight = 16;
  int wingwidth = 15;
  int wingheight = 60;
+ float mass = 1;
+ 
+ void applyForce(PVector f) {
+   PVector force = PVector.div(f, mass);
+   acc.add(f);
+ }
  
  void move() {
-  acc.x = random(-noise(t), noise(t));
-  acc.y = random(-noise(t), noise(t));
+  PVector force = new PVector(0, 0);
+  force.x = random(-noise(t), noise(t));
+  force.y = random(-noise(t), noise(t));
   t += inc;
+  applyForce(force);
+  
   vel.add(acc);
   loc.add(vel);
   acc.mult(random(0.2, 0.5));

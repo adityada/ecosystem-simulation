@@ -4,6 +4,7 @@ static int height = 720;
 Fly[] flies = new Fly[11];
 Dragonfly[] dragonflies = new Dragonfly[3];
 Bee[] bees = new Bee[2];
+BabyBee[] babybees = new BabyBee[12];
 
 void settings() {
  size(width, height); 
@@ -15,6 +16,9 @@ void settings() {
  }
  for(int i = 0; i < bees.length; i++) {
   bees[i] = new Bee(); 
+ }
+ for(int i = 0; i < babybees.length; i++) {
+  babybees[i] = new BabyBee(); 
  }
 }
 
@@ -32,5 +36,13 @@ void draw() {
  for(int i = 0; i < bees.length; i++) {
   bees[i].move();
   bees[i].draw();
+ }
+  for(int i = 0; i < babybees.length; i++) {
+  for(int j = 0; j < bees.length; j++) {
+   PVector force = bees[j].attract(babybees[i]);
+   babybees[i].applyForce(force);
+  }
+  babybees[i].update();
+  babybees[i].draw();
  }
 }
